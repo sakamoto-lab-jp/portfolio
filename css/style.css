@@ -1,0 +1,388 @@
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: #fff;
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    --sidebar-width: 185px;
+}
+
+/* レイアウト */
+.layout {
+    min-height: 100vh;
+}
+
+/* サイドバー */
+.sidebar {
+    width: var(--sidebar-width);
+    min-height: 100vh;
+    padding: 2.5rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.site-logo img {
+    width: 120px;
+    height: auto;
+    display: block;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    align-items: flex-start;
+}
+
+.main-nav a,
+.filter-button {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: #222;
+}
+
+.main-nav a:hover,
+.filter-button:hover {
+    color: #999;
+}
+
+.main-nav a:last-child {
+    margin-top: 2rem;
+}
+
+/* 下線 */
+/* underline base */
+.filter-button,
+.filter-link,
+.about-link {
+    position: relative;
+    display: inline-block;
+}
+
+/* button only reset */
+.filter-button {
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.filter-button::after,
+.filter-link::after,
+.about-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 1.7px;
+    background: #222;
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.filter-button.is-active::after,
+.filter-link.is-active::after,
+.about-link.is-active::after {
+    opacity: 1;
+}
+
+/* フィルター */
+.work-card.is-hidden {
+    display: none;
+}
+
+.filter-button.is-active {
+    color: #222;
+}
+
+/* メインコンテンツ */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 7rem 3rem 3rem 0.6rem;
+    flex: 1;
+}
+
+@media screen and (max-width: 767px) {
+    .sidebar {
+        position: static;
+        padding: 2rem 1.8rem 0.3rem;
+        width: 100%;
+        min-height: auto;
+        gap: 1.6rem;
+    }
+
+    .main-nav {
+        flex-direction: row;
+        column-gap: 1.4rem;
+        row-gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .main-nav> :nth-last-child(2) {
+        margin-right: 0.8rem;
+    }
+
+    .main-nav a:last-child {
+        margin-top: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 2rem 1.8rem 0;
+    }
+}
+
+/* サムネイル */
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2.5rem;
+}
+
+@media screen and (max-width: 960px) {
+    .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .works-grid {
+        grid-template-columns: 1fr;
+        gap: 1.7rem 2.5rem;
+    }
+}
+
+.work-card {
+    width: 100%;
+}
+
+.work-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #fff;
+}
+
+.work-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.thumb-hover {
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+/* ロゴ */
+.work-thumb-logo img {
+    object-fit: contain;
+    padding: 15%;
+}
+
+.work-thumb-logo img.thumb-hover {
+    object-fit: cover;
+    padding: 0;
+}
+
+.work-card:hover .thumb-hover {
+    opacity: 1;
+}
+
+
+.work-info {
+    margin-top: 0.8rem;
+}
+
+@media screen and (max-width: 767px) {
+    .work-info {
+        margin-top: 0.6rem;
+    }
+}
+
+.work-title {
+    font-family: "Spectral", serif;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+}
+
+.work-category {
+    position: relative;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    color: #222;
+    letter-spacing: 0.12em;
+    margin-top: 0.2rem;
+}
+
+.work-card:hover .work-title,
+.work-card:hover .work-category {
+    color: #999;
+}
+
+/* メインキャプション */
+.works-caption {
+    font-size: 10px;
+    color: #888;
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.04em;
+    width: 100%;
+    text-align: right;
+}
+
+@media screen and (max-width: 767px) {
+    .works-caption {
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+
+/* ====================
+Work Detail Page
+==================== */
+
+.work-detail {
+    max-width: 650px;
+}
+
+.work-detail-title {
+    font-size: 19px;
+    margin-bottom: .5rem;
+}
+
+@media screen and (max-width: 767px) {
+    .work-detail-title {
+        font-size: 18px;
+    }
+}
+
+
+.work-detail-category {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 1.6rem;
+}
+
+.work-detail-hero {
+    max-width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: .1rem;
+}
+
+.detail-pc,
+.detail-sp {
+    width: calc((100% - 0.1rem) / 2);
+    display: block;
+}
+
+.work-detail-description {
+    width: 100%;
+    margin-top: 1.6rem;
+    line-height: 1.9;
+    font-size: 12px;
+}
+
+.work-detail-link {
+    margin-top: .8rem;
+}
+
+.work-detail-link a {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+}
+
+.link-arrow {
+    width: 12px;
+    height: 12px;
+    margin-top: 1px;
+}
+
+.work-detail-link a:hover {
+    color: #aaa;
+}
+
+.detail-single {
+    min-width: 250px;
+    border: 1px solid #dcdcdc;
+    width: 55%;
+    display: block;
+
+}
+
+.detail-logo {
+    width: 48%;
+    min-width: 250px;
+    display: block;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+}
+
+.detail-logo04 {
+    width: 80%;
+    min-width: 230px;
+    display: block;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+}
+
+.detail-usage {
+    margin-top: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.detail-usage img {
+    width: 35%;
+    max-width: 520px;
+    min-width: 250px;
+    display: block;
+}
+
+/* about */
+.about {
+    max-width: 650px;
+}
+
+.about p {
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+}
