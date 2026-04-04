@@ -318,6 +318,12 @@ Work Detail Page
     font-size: 12px;
 }
 
+.work-detail-role {
+    margin-top: .8rem;
+    font-size: .6rem;
+    line-height: 1.7;
+}
+
 .work-detail-link {
     margin-top: .8rem;
 }
