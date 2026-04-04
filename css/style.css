@@ -120,7 +120,7 @@ a {
 /* メインコンテンツ */
 .main-content {
     margin-left: var(--sidebar-width);
-    padding: 7rem 2.5rem 3rem 0.6rem;
+    padding: 7rem 3rem 3rem 0.6rem;
     flex: 1;
 }
 
@@ -391,4 +391,12 @@ Work Detail Page
     font-size: 12px;
     line-height: 1.9;
     margin-bottom: 1.4rem;
+}
+
+.about a {
+    text-decoration: underline;
+}
+
+.about a:hover {
+    opacity: 0.6;
 }
